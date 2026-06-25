@@ -1,4 +1,10 @@
+@extends('layouts.app')
 
+@section('title', 'Mooré Connections — Come Home to Yourself')
+
+@section('styles')
+<style>
+    
 /* ── TOKENS ─────────────────────────────────────────── */
 :root { --base: #FAF7F2; --blush: #F0E8DC; --taupe: #9C8874; --brown: #6B4F3A; --dark: #2C1A0E; --white: #FFFFFF; --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'DM Sans', sans-serif; }
 
@@ -139,7 +145,6 @@ body { font-family: var(--sans); background: var(--base); color: var(--dark); ov
 .btn-light { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); background: var(--base); padding: 15px 44px; text-decoration: none; display: inline-block; transition: background 0.25s, transform 0.2s; }
 .btn-light:hover { background: var(--blush); transform: translateY(-2px); }
 
-/* ── TESTIMONIALS ───────────────────────────────────── */
 .testimonials { background: var(--base); padding: 110px 56px; }
 .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
 .testi-card { background: var(--white); padding: 36px 32px; border: 1px solid rgba(156,136,116,0.1); }
@@ -147,7 +152,6 @@ body { font-family: var(--sans); background: var(--base); color: var(--dark); ov
 .testi-body { font-family: var(--serif); font-size: 17px; font-weight: 300; font-style: italic; color: var(--dark); line-height: 1.65; margin-bottom: 24px; }
 .testi-name { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--taupe); }
 
-/* ── FOOTER ─────────────────────────────────────────── */
 footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15); padding: 60px 56px 40px; }
 .footer-inner { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr auto; gap: 48px; align-items: center; }
 .footer-logo img { height: 44px; }
@@ -156,7 +160,270 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
 .footer-links a:hover { color: var(--dark); }
 .footer-copy { font-size: 11px; color: var(--taupe); font-family: var(--sans); font-weight: 300; text-align: right; }
 
-/* ── RESPONSIVE ─────────────────────────────────────── */
 @media (max-width: 960px) { .nav { padding: 18px 24px; } .nav-links { display: none; } .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; text-align: center; } .hero-left { padding-right: 0; align-items: center; } .hero-wordmark { max-width: 300px; } .hero-tagline { max-width: 100%; } .hero-actions { justify-content: center; flex-wrap: wrap; } .hero-right { min-height: 320px; } .hero-scroll { left: 24px; } .about-grid, .why-grid, .journal-inner { grid-template-columns: 1fr; gap: 40px; } .section-pad { padding: 72px 24px; } .section-pad-sm { padding: 56px 24px; } .offerings-header { flex-direction: column; align-items: flex-start; gap: 24px; } .offerings-grid { grid-template-columns: 1fr 1fr; gap: 16px; } .testi-grid { grid-template-columns: 1fr; } .quote-banner { padding: 80px 24px; } .footer-inner { grid-template-columns: 1fr; text-align: center; gap: 24px; } .footer-links { justify-content: center; } .footer-copy { text-align: center; } }
-
 @media (prefers-reduced-motion: reduce) { .reveal, .hero-flower-main, .hero-flower-accent { transition: none; animation: none; opacity: 1; transform: none; } }
+</style>
+
+
+
+
+
+@section('content')
+
+<section class="hero" id="home">
+  <div class="hero-left">
+    <span class="hero-eyebrow">Welcome</span>
+    <img
+      class="hero-wordmark"
+      src="resources/img/hero.png"
+      alt="Mooré Connections">
+    <div class="hero-line"></div>
+    <p class="hero-tagline">
+      A space to slow down, reconnect,<br>and return to yourself.
+    </p>
+    <div class="hero-actions">
+      <a href="#offerings" class="btn-dark">Explore Sessions</a>
+      <a href="#about" class="btn-text">Meet Madison</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img
+      id="heroFlowerMain"
+      class="hero-flower-main"
+      src="resources/img/IMG_3864-removebg-preview.png"
+      alt="">
+    <img
+      id="heroFlowerAccent"
+      class="hero-flower-accent"
+      src="resources/img/IMG_3869-removebg-preview.png"
+      alt="">
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ── ABOUT ────────────────────────────────────────── -->
+<section class="about section-pad" id="about">
+  <div class="inner about-grid">
+    <div class="about-visual reveal">
+      <img class="about-flower"
+           src="resources/img/IMG_3868-removebg-preview.png" alt="">
+      <img class="about-flower-sm"
+           src="resources/img/IMG_3867-removebg-preview.png" alt="">
+    </div>
+    <div class="about-text">
+      <span class="label reveal reveal-delay-1">Hi, I'm Your Guide</span>
+      <h2 class="heading-lg reveal reveal-delay-2">
+        True wellness starts<br>with <em>connection.</em>
+      </h2>
+      <div class="rule reveal reveal-delay-3"></div>
+      <p class="body-text reveal reveal-delay-3">
+        I created this community because I believe that real clarity, presence,
+        and joy come from being deeply connected — to ourselves, to others, and
+        to the life we are actively creating together.
+      </p>
+      <p class="body-text reveal reveal-delay-4" style="margin-top:16px;">
+        This is a space for you to slow down, reflect, and reconnect with what
+        truly matters. Whether through a private session, a group event, or a
+        daily journaling practice — every experience here is designed to bring
+        you home to yourself.
+      </p>
+      <span class="about-sig reveal reveal-delay-4">With love, Madison xo</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── EVENTS PREVIEW ─────────────────────────────────── -->
+<section class="events-preview section-pad" id="offerings">
+  <div class="inner">
+    <div class="events-preview-header">
+      <div>
+        <span class="label reveal">Upcoming Events</span>
+        <h2 class="heading-lg reveal reveal-delay-1">
+          Gather, reflect,<br><em>and reconnect.</em>
+        </h2>
+      </div>
+      <a href="events.html" class="btn-text reveal reveal-delay-2">View all events →</a>
+    </div>
+
+    <!-- Empty state — shown when no events are scheduled -->
+    <div class="events-empty">
+      <div class="events-empty-visual reveal">
+        <img class="events-empty-flower"
+             src="resources/img/IMG_3864-removebg-preview.png" alt="">
+        <img class="events-empty-flower-sm"
+             src="resources/img/IMG_3867-removebg-preview.png" alt="">
+      </div>
+      <div>
+        <p class="events-empty-heading reveal reveal-delay-1">
+          Something beautiful<br>is being planned.
+        </p>
+        <p class="events-empty-body reveal reveal-delay-2">
+          No events are scheduled just yet — but they're coming.
+          Leave your name and email below and you'll be the very first
+          to know when Madison announces something new.
+        </p>
+        <form class="subscribe-form reveal reveal-delay-3" id="subscribeForm">
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your first name" required>
+            <input type="email" name="email" placeholder="Your email" required>
+          </div>
+          <div class="form-row">
+            <button type="submit">Notify Me</button>
+          </div>
+          <p class="subscribe-note">No spam, ever. Just a quiet note when something's ready.</p>
+          <p class="subscribe-success" id="subscribeSuccess">
+            You're on the list — we'll be in touch. ✦
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY CONNECTION ────────────────────────────────── -->
+<section class="why section-pad" id="community">
+  <div class="inner why-grid">
+    <div>
+      <span class="label reveal">Why Connection?</span>
+      <h2 class="heading-lg reveal reveal-delay-1">
+        The power of<br><em>showing up.</em>
+      </h2>
+      <ul class="why-list">
+        <li class="why-item reveal reveal-delay-1">
+          <span class="why-roman">i.</span>
+          <div>
+            <p class="why-item-title">Connect With Yourself</p>
+            <p class="why-item-body">Tune in to your thoughts, emotions, and inner world — without judgment.</p>
+          </div>
+        </li>
+        <li class="why-item reveal reveal-delay-2">
+          <span class="why-roman">ii.</span>
+          <div>
+            <p class="why-item-title">Clarify What Matters</p>
+            <p class="why-item-body">Get clear on your values, desires, and what truly lights you up.</p>
+          </div>
+        </li>
+        <li class="why-item reveal reveal-delay-3">
+          <span class="why-roman">iii.</span>
+          <div>
+            <p class="why-item-title">Build Stronger Relationships</p>
+            <p class="why-item-body">When we understand ourselves, we connect more deeply with everyone around us.</p>
+          </div>
+        </li>
+        <li class="why-item reveal reveal-delay-4">
+          <span class="why-roman">iv.</span>
+          <div>
+            <p class="why-item-title">Create a Life You Love</p>
+            <p class="why-item-body">Small daily moments of reflection lead to the big shifts you've been waiting for.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="why-visual reveal">
+      <img class="why-flower-main"
+           src="resources/img/IMG_3864-removebg-preview.png" alt="">
+      <img class="why-flower-sm"
+           src="resources/img/IMG_3863-removebg-preview.png" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ── JOURNAL / PROMPTS ──────────────────────────────── -->
+<section class="journal section-pad" id="journal">
+  <div class="inner journal-inner">
+    <div>
+      <span class="label reveal">Your Daily Practice</span>
+      <h2 class="heading-lg reveal reveal-delay-1">
+        A simple 3-step<br><em>framework.</em>
+      </h2>
+      <div class="rule reveal reveal-delay-2"></div>
+      <p class="body-text reveal reveal-delay-2">
+        Five minutes each day. Three honest questions. No pressure, no perfection —
+        just you, showing up for yourself.
+      </p>
+      <ul class="steps-list" style="margin-top:36px;">
+        <li class="step-item reveal reveal-delay-2">
+          <span class="step-num">1</span>
+          <div>
+            <p class="step-title">How do I feel today?</p>
+            <p class="step-body">Check in with your emotions. Name it without judgment.</p>
+          </div>
+        </li>
+        <li class="step-item reveal reveal-delay-3">
+          <span class="step-num">2</span>
+          <div>
+            <p class="step-title">What do I want this day to bring?</p>
+            <p class="step-body">Set an intention. What would make today feel meaningful?</p>
+          </div>
+        </li>
+        <li class="step-item reveal reveal-delay-4">
+          <span class="step-num">3</span>
+          <div>
+            <p class="step-title">Three things I'm grateful for.</p>
+            <p class="step-body">Gratitude shifts everything. Big or small — name them.</p>
+          </div>
+        </li>
+      </ul>
+      <div style="margin-top:44px;" class="reveal reveal-delay-4">
+        <a href="#book" class="btn-dark">Start Your Practice</a>
+      </div>
+    </div>
+    <div class="journal-visual reveal">
+      <img class="journal-flower"
+           src="resources/img/IMG_3865-removebg-preview.png" alt="">
+      <img class="journal-flower-sm"
+           src="resources/img/IMG_3867-removebg-preview.png" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ── QUOTE BANNER ───────────────────────────────────── -->
+<section class="quote-banner" id="book">
+  <img class="quote-flower-l"
+       src="resources/img/IMG_3864-removebg-preview.png" alt="">
+  <img class="quote-flower-r"
+       src="resources/img/IMG_3864-removebg-preview.png" alt="">
+  <div class="quote-inner">
+    <span class="quote-mark reveal">"</span>
+    <p class="quote-text reveal reveal-delay-1">
+      Connection is the new wellness.
+    </p>
+    <span class="quote-attr reveal reveal-delay-2">Mooré Connections</span>
+    <div class="reveal reveal-delay-3">
+      <a href="events.html" class="btn-light">Book Your Session</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ───────────────────────────────────── -->
+<section class="testimonials">
+  <div class="inner">
+    <span class="label reveal">Kind Words</span>
+    <h2 class="heading-md reveal reveal-delay-1">What our community says</h2>
+    <div class="testi-grid">
+      <div class="testi-card reveal reveal-delay-1">
+        <p class="testi-stars">★★★★★</p>
+        <p class="testi-body">"This practice genuinely changed how I start my mornings. I feel more grounded than I have in years."</p>
+        <p class="testi-name">— Sarah M., Sydney</p>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <p class="testi-stars">★★★★★</p>
+        <p class="testi-body">"Madison holds such a safe, beautiful space. I leave every session feeling lighter and clearer."</p>
+        <p class="testi-name">— Emma R., Melbourne</p>
+      </div>
+      <div class="testi-card reveal reveal-delay-3">
+        <p class="testi-stars">★★★★★</p>
+        <p class="testi-body">"The Inner Circle community is unlike anything I've found online. Genuine, warm, and deeply nourishing."</p>
+        <p class="testi-name">— Jess T., Brisbane</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+@section('scripts')
+@endsection

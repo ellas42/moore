@@ -2,21 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\BookingController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',        fn() => view('home'))->name('home');
+Route::get('/about',   fn() => view('about'))->name('about');
+Route::get('/events',  [EventController::class, 'index'])->name('events');
+Route::get('/journal', fn() => view('journal'))->name('journal');
 
 Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__.'/auth.php';
+Route::post('/booking',   [BookingController::class, 'store'])->name('booking.store');
+Route::get('/booking/{booking}/confirmation',
+    [BookingController::class, 'confirmation'])->name('booking.confirmation');

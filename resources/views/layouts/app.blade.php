@@ -1,36 +1,48 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<title>@yield('title', 'Mooré Connections')</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+@yield('styles')
+</head>
+<body>
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="{{ route('home') }}" class="nav-logo">
+    <img src="{{ asset('resources/img/logo-removebg-preview.png') }}" alt="Mooré Connections">
+  </a>
+  <ul class="nav-links">
+    <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
+    <li><a href="/about" class="{{ request()->routeIs('about') ? 'active' : '' }}">About</a></li>
+    <li><a href="{{ route('events') }}" class="{{ request()->routeIs('events') ? 'active' : '' }}">Events</a></li>
+    <li><a href="/journal" class="{{ request()->routeIs('journal') ? 'active' : '' }}">Journal</a></li>
+  </ul>
+  <a href="{{ route('events') }}" class="nav-book">Get Notified</a>
+</nav>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+@yield('content')
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="{{ asset('resources/img/IMG_3855.JPEG') }}" alt="Mooré Connections">
+    </div>
+    <ul class="footer-links">
+      <li><a href="{{ route('home') }}">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="{{ route('events') }}">Events</a></li>
+      <li><a href="/journal">Journal</a></li>
+    </ul>
+    <p class="footer-copy">© {{ date('Y') }} Mooré Connections</p>
+  </div>
+</footer>
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-    </body>
+@yield('scripts')
+</body>
 </html>
