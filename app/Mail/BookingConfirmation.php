@@ -13,7 +13,7 @@ class BookingConfirmation extends Mailable
 
     public function envelope(): Envelope
     {
-        return new Envelope(subject: 'Booking Confirmed — Mooré Connections');
+        return new Envelope(subject: 'Booking Confirmed!');
     }
 
     public function content(): Content

@@ -5,15 +5,12 @@
 @section('styles')
 <style>
     
-/* ── TOKENS ─────────────────────────────────────────── */
 :root { --base: #FAF7F2; --blush: #F0E8DC; --taupe: #9C8874; --brown: #6B4F3A; --dark: #2C1A0E; --white: #FFFFFF; --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'DM Sans', sans-serif; }
 
-/* ── RESET ──────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--sans); background: var(--base); color: var(--dark); overflow-x: hidden; }
 
-/* ── REVEAL ANIMATION ───────────────────────────────── */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-delay-1 { transition-delay: 0.1s; }
@@ -21,7 +18,6 @@ body { font-family: var(--sans); background: var(--base); color: var(--dark); ov
 .reveal-delay-3 { transition-delay: 0.34s; }
 .reveal-delay-4 { transition-delay: 0.46s; }
 
-/* ── NAV ────────────────────────────────────────────── */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 22px 56px; transition: background 0.5s, border-color 0.5s; border-bottom: 1px solid transparent; }
 .nav.scrolled { background: rgba(250,247,242,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-color: rgba(156,136,116,0.18); }
 .nav-logo img { height: 46px; width: auto; display: block; }
@@ -31,19 +27,12 @@ body { font-family: var(--sans); background: var(--base); color: var(--dark); ov
 .nav-book { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; color: var(--white); background: var(--dark); padding: 12px 30px; text-decoration: none; transition: background 0.25s; border: none; cursor: pointer; }
 .nav-book:hover { background: var(--brown); }
 
-/* ── HERO ───────────────────────────────────────────── */
 .hero { min-height: 100vh; background: var(--base); display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 120px 56px 80px; gap: 0; position: relative; overflow: hidden; }
-
 .hero-left { display: flex; flex-direction: column; justify-content: center; padding-right: 60px; z-index: 2; }
-
 .hero-eyebrow { font-family: var(--sans); font-size: 10px; font-weight: 400; letter-spacing: 3.5px; text-transform: uppercase; color: var(--taupe); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.9s 0.2s ease forwards; }
-
 .hero-wordmark { width: 100%; max-width: 300px; display: block; margin-bottom: 36px; opacity: 0; animation: fadeUp 0.9s 0.38s ease forwards; }
-
 .hero-line { width: 48px; height: 1px; background: var(--taupe); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.9s 0.52s ease forwards; }
-
 .hero-tagline { font-family: var(--serif); font-size: clamp(18px, 2vw, 24px); font-weight: 300; font-style: italic; color: var(--brown); line-height: 1.65; margin-bottom: 52px; max-width: 380px; opacity: 0; animation: fadeUp 0.9s 0.64s ease forwards; }
-
 .hero-actions { display: flex; gap: 24px; align-items: center; opacity: 0; animation: fadeUp 0.9s 0.78s ease forwards; }
 
 .btn-dark { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--white); background: var(--dark); padding: 15px 40px; text-decoration: none; display: inline-block; transition: background 0.25s, transform 0.2s; }
@@ -52,13 +41,9 @@ body { font-family: var(--sans); background: var(--base); color: var(--dark); ov
 .btn-text { font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--taupe); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; transition: color 0.2s; }
 .btn-text:hover { color: var(--dark); }
 
-/* hero right — flower display */
 .hero-right { position: relative; height: 100%; min-height: 500px; display: flex; align-items: center; justify-content: center; }
-
 .hero-flower-main { width: 75%; max-width: 480px; position: relative; z-index: 2; opacity: 0; animation: fadeScale 1.1s 0.5s ease forwards; will-change: transform; }
-
 .hero-flower-accent { position: absolute; bottom: 5%; left: 2%; width: 36%; z-index: 1; opacity: 0; animation: fadeScale 1.1s 0.9s ease forwards; will-change: transform; }
-
 .hero-scroll { position: absolute; bottom: 40px; left: 56px; display: flex; align-items: center; gap: 14px; opacity: 0; animation: fadeUp 1s 1.3s ease forwards; }
 .hero-scroll-line { width: 40px; height: 1px; background: var(--taupe); transform-origin: left; animation: lineGrow 1s 1.6s ease forwards; transform: scaleX(0); }
 @keyframes lineGrow { to { transform: scaleX(1); } }
@@ -67,7 +52,6 @@ body { font-family: var(--sans); background: var(--base); color: var(--dark); ov
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeScale { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
 
-/* ── SECTION BASE ───────────────────────────────────── */
 .section-pad { padding: 110px 56px; }
 .section-pad-sm { padding: 80px 56px; }
 .inner { max-width: 1080px; margin: 0 auto; }
@@ -78,7 +62,6 @@ body { font-family: var(--sans); background: var(--base); color: var(--dark); ov
 .body-text { font-family: var(--sans); font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--brown); }
 .rule { width: 40px; height: 1px; background: var(--taupe); margin: 24px 0; }
 
-/* ── ABOUT SECTION ──────────────────────────────────── */
 .about { background: var(--white); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .about-visual { position: relative; display: flex; align-items: center; justify-content: flex-end; }
@@ -87,7 +70,6 @@ body { font-family: var(--sans); background: var(--base); color: var(--dark); ov
 .about-text .body-text { margin-top: 20px; max-width: 440px; }
 .about-sig { font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--taupe); margin-top: 32px; display: block; }
 
-/* ── EVENTS PREVIEW (homepage) ──────────────────────── */
 .events-preview { background: var(--base); }
 .events-preview-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 64px; }
 .events-preview-header .heading-lg { max-width: 420px; }
@@ -108,7 +90,6 @@ body { font-family: var(--sans); background: var(--base); color: var(--dark); ov
 .subscribe-note { font-size: 11px; color: var(--taupe); font-family: var(--sans); font-weight: 300; }
 .subscribe-success { display: none; font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--taupe); }
 
-/* ── WHY SECTION ────────────────────────────────────── */
 .why { background: var(--blush); position: relative; overflow: hidden; }
 .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .why-list { list-style: none; margin-top: 36px; }
@@ -121,7 +102,6 @@ body { font-family: var(--sans); background: var(--base); color: var(--dark); ov
 .why-flower-main { width: 85%; max-width: 380px; }
 .why-flower-sm { position: absolute; bottom: -20px; right: -10px; width: 38%; opacity: 0.8; }
 
-/* ── JOURNAL / PROMPTS ──────────────────────────────── */
 .journal { background: var(--white); }
 .journal-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .journal-visual { position: relative; display: flex; justify-content: center; }
@@ -134,7 +114,6 @@ body { font-family: var(--sans); background: var(--base); color: var(--dark); ov
 .step-title { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 1.6px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; }
 .step-body { font-family: var(--sans); font-size: 13.5px; font-weight: 300; line-height: 1.7; color: var(--brown); }
 
-/* ── QUOTE / CTA BANNER ─────────────────────────────── */
 .quote-banner { background: var(--dark); padding: 110px 56px; text-align: center; position: relative; overflow: hidden; }
 .quote-flower-l { position: absolute; left: -40px; top: 50%; transform: translateY(-50%); width: 260px; opacity: 0.1; pointer-events: none; }
 .quote-flower-r { position: absolute; right: -40px; top: 50%; transform: translateY(-50%) scaleX(-1); width: 260px; opacity: 0.1; pointer-events: none; }
@@ -164,7 +143,7 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
 @media (prefers-reduced-motion: reduce) { .reveal, .hero-flower-main, .hero-flower-accent { transition: none; animation: none; opacity: 1; transform: none; } }
 </style>
 
-
+@endsection
 
 
 
@@ -175,7 +154,7 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
     <span class="hero-eyebrow">Welcome</span>
     <img
       class="hero-wordmark"
-      src="resources/img/hero.png"
+      src="{{ asset('img/hero.png') }}"
       alt="Mooré Connections">
     <div class="hero-line"></div>
     <p class="hero-tagline">
@@ -191,12 +170,12 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
     <img
       id="heroFlowerMain"
       class="hero-flower-main"
-      src="resources/img/IMG_3864-removebg-preview.png"
+      src="{{ asset('img/IMG_3864-removebg-preview.png') }}"
       alt="">
     <img
       id="heroFlowerAccent"
       class="hero-flower-accent"
-      src="resources/img/IMG_3869-removebg-preview.png"
+      src="{{ asset('img/IMG_3869-removebg-preview.png') }}"
       alt="">
   </div>
 
@@ -206,14 +185,13 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
   </div>
 </section>
 
-<!-- ── ABOUT ────────────────────────────────────────── -->
 <section class="about section-pad" id="about">
   <div class="inner about-grid">
     <div class="about-visual reveal">
       <img class="about-flower"
-           src="resources/img/IMG_3868-removebg-preview.png" alt="">
+           src="{{ asset('img/IMG_3868-removebg-preview.png') }}" alt="">
       <img class="about-flower-sm"
-           src="resources/img/IMG_3867-removebg-preview.png" alt="">
+           src="{{ asset('img/IMG_3867-removebg-preview.png') }}" alt="">
     </div>
     <div class="about-text">
       <span class="label reveal reveal-delay-1">Hi, I'm Your Guide</span>
@@ -237,7 +215,6 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
   </div>
 </section>
 
-<!-- ── EVENTS PREVIEW ─────────────────────────────────── -->
 <section class="events-preview section-pad" id="offerings">
   <div class="inner">
     <div class="events-preview-header">
@@ -247,16 +224,15 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
           Gather, reflect,<br><em>and reconnect.</em>
         </h2>
       </div>
-      <a href="events.html" class="btn-text reveal reveal-delay-2">View all events →</a>
+      <a href="{{ route('events') }}" class="btn-text reveal reveal-delay-2">View all events →</a>
     </div>
 
-    <!-- Empty state — shown when no events are scheduled -->
     <div class="events-empty">
       <div class="events-empty-visual reveal">
         <img class="events-empty-flower"
-             src="resources/img/IMG_3864-removebg-preview.png" alt="">
+             src="{{ asset('img/IMG_3864-removebg-preview.png') }}" alt="">
         <img class="events-empty-flower-sm"
-             src="resources/img/IMG_3867-removebg-preview.png" alt="">
+             src="{{ asset('img/IMG_3867-removebg-preview.png') }}" alt="">
       </div>
       <div>
         <p class="events-empty-heading reveal reveal-delay-1">
@@ -285,7 +261,6 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
   </div>
 </section>
 
-<!-- ── WHY CONNECTION ────────────────────────────────── -->
 <section class="why section-pad" id="community">
   <div class="inner why-grid">
     <div>
@@ -326,14 +301,13 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
     </div>
     <div class="why-visual reveal">
       <img class="why-flower-main"
-           src="resources/img/IMG_3864-removebg-preview.png" alt="">
+           src="{{ asset('img/IMG_3864-removebg-preview.png') }}" alt="">
       <img class="why-flower-sm"
-           src="resources/img/IMG_3863-removebg-preview.png" alt="">
+           src="{{ asset('img/IMG_3863-removebg-preview.png') }}" alt="">
     </div>
   </div>
 </section>
 
-<!-- ── JOURNAL / PROMPTS ──────────────────────────────── -->
 <section class="journal section-pad" id="journal">
   <div class="inner journal-inner">
     <div>
@@ -375,19 +349,18 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
     </div>
     <div class="journal-visual reveal">
       <img class="journal-flower"
-           src="resources/img/IMG_3865-removebg-preview.png" alt="">
+           src="{{ asset('img/IMG_3865-removebg-preview.png') }}" alt="">
       <img class="journal-flower-sm"
-           src="resources/img/IMG_3867-removebg-preview.png" alt="">
+           src="{{ asset('img/IMG_3867-removebg-preview.png') }}" alt="">
     </div>
   </div>
 </section>
 
-<!-- ── QUOTE BANNER ───────────────────────────────────── -->
 <section class="quote-banner" id="book">
   <img class="quote-flower-l"
-       src="resources/img/IMG_3864-removebg-preview.png" alt="">
+       src="{{ asset('img/IMG_3864-removebg-preview.png') }}" alt="">
   <img class="quote-flower-r"
-       src="resources/img/IMG_3864-removebg-preview.png" alt="">
+       src="{{ asset('img/IMG_3864-removebg-preview.png') }}" alt="">
   <div class="quote-inner">
     <span class="quote-mark reveal">"</span>
     <p class="quote-text reveal reveal-delay-1">
@@ -395,12 +368,11 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
     </p>
     <span class="quote-attr reveal reveal-delay-2">Mooré Connections</span>
     <div class="reveal reveal-delay-3">
-      <a href="events.html" class="btn-light">Book Your Session</a>
+      <a href="{{ route('events') }}" class="btn-light">Book Your Session</a>
     </div>
   </div>
 </section>
 
-<!-- ── TESTIMONIALS ───────────────────────────────────── -->
 <section class="testimonials">
   <div class="inner">
     <span class="label reveal">Kind Words</span>
@@ -425,5 +397,97 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
   </div>
 </section>
 
+@endsection
+
+
+
+
 @section('scripts')
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+// Intersection Observer — reveal on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+
+// Parallax — hero flowers drift gently on scroll
+const heroMain   = document.getElementById('heroFlowerMain');
+const heroAccent = document.getElementById('heroFlowerAccent');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (heroMain)   heroMain.style.transform   = `translateY(${y * 0.18}px)`;
+  if (heroAccent) heroAccent.style.transform = `translateY(${y * 0.1}px)`;
+}, { passive: true });
+
+// Subscribe form — demo handler (replace with fetch to /subscribe in Laravel)
+const subscribeForm = document.getElementById('subscribeForm');
+const subscribeSuccess = document.getElementById('subscribeSuccess');
+if (subscribeForm) {
+  subscribeForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = subscribeForm.querySelector('button');
+    btn.textContent = 'Saving...';
+    btn.disabled = true;
+    // In Laravel this becomes: fetch('/subscribe', { method:'POST', body: new FormData(subscribeForm) })
+    setTimeout(() => {
+      subscribeForm.querySelector('.form-row:first-child').style.display = 'none';
+      subscribeForm.querySelector('.form-row:last-of-type').style.display = 'none';
+      subscribeForm.querySelector('.subscribe-note').style.display = 'none';
+      subscribeSuccess.style.display = 'block';
+    }, 800);
+  });
+}
+
+
+function setupSubscribeForm(formId, successId) {
+  const form = document.getElementById(formId);
+  if (!form) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button');
+    btn.textContent = 'Saving...';
+    btn.disabled = true;
+
+    const res = await fetch('{{ route("subscribe") }}', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+      },
+      body: JSON.stringify({
+        name:  form.querySelector('input[name="name"]').value,
+        email: form.querySelector('input[name="email"]').value,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      form.querySelector('.form-row:first-child').style.display = 'none';
+      form.querySelector('.form-row:last-of-type').style.display = 'none';
+      form.querySelector('.subscribe-note').style.display = 'none';
+      document.getElementById(successId).style.display = 'block';
+    } else {
+
+    btn.textContent = 'Try Again';
+      btn.disabled = false;
+      alert(data.message ?? 'Something went wrong.');
+    }
+  });
+}
+setupSubscribeForm('subscribeForm', 'subscribeSuccess');
+</script>
 @endsection

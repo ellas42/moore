@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'square' => [
+        'app_id' => env('SQUARE_APP_ID'),
+        'location_id' => env('SQUARE_LOCATION_ID'),
+    ]
+
 ];

@@ -13,9 +13,8 @@ class SubscriberConfirmation extends Mailable
 
     public function envelope(): Envelope
     {
-        return new Envelope(subject: "You're on the list — Mooré Connections");
+        return new Envelope(subject: "You're on the list!");
     }
-
     public function content(): Content
     {
         return new Content(

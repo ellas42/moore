@@ -1,3 +1,9 @@
+@extends('layouts.app')
+
+@section('title', 'Events — Mooré Connections')
+
+@section('styles')
+<style>
 :root { --base: #FAF7F2; --blush: #F0E8DC; --taupe: #9C8874; --brown: #6B4F3A; --dark: #2C1A0E; --white: #FFFFFF; --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'DM Sans', sans-serif; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -121,3 +127,341 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
 @media (max-width: 960px) { .nav { padding: 18px 24px; } .nav-links { display: none; } .page-hero { padding: 130px 24px 60px; } .page-hero-inner { grid-template-columns: 1fr; } .page-hero-flower { width: 160px; } .events-main { padding: 56px 24px 80px; } #emptyState { grid-template-columns: 1fr; gap: 48px; } .events-grid { grid-template-columns: 1fr 1fr; } .subscribe-strip { grid-template-columns: 1fr; gap: 28px; } .strip-form { min-width: unset; } .footer-inner { grid-template-columns: 1fr; text-align: center; gap: 20px; } .footer-links { justify-content: center; } .footer-copy { text-align: center; } .demo-toggle { padding: 14px 24px; } .modal-header { padding: 28px 24px 20px; } .modal-body { padding: 24px 24px 32px; } .form-row-2 { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .events-grid { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .reveal { transition: none; opacity: 1; transform: none; } }
+</style>
+@endsection
+
+@section('content')
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <span class="page-label">Mooré Connections</span>
+      <h1 class="page-heading">Events &amp;<br><em>Gatherings.</em></h1>
+      <p class="page-subtext">
+        Intentional spaces to gather, journal, breathe, and reconnect —
+        with yourself and with others who are walking the same path.
+      </p>
+    </div>
+    <img class="page-hero-flower"
+         src="{{ asset('img/IMG_3865-removebg-preview.png') }}" alt="">
+  </div>
+</section>
+
+<section class="events-main">
+  <div class="inner">
+
+    @if($hasEvents)
+
+      {{-- FILTER BAR --}}
+      <div class="events-filter">
+        <a href="{{ route('events') }}"
+           class="filter-btn {{ $filter === 'all' ? 'active' : '' }}">All Events</a>
+        <a href="{{ route('events', ['filter' => 'online']) }}"
+           class="filter-btn {{ $filter === 'online' ? 'active' : '' }}">Online</a>
+        <a href="{{ route('events', ['filter' => 'inperson']) }}"
+           class="filter-btn {{ $filter === 'inperson' ? 'active' : '' }}">In Person</a>
+      </div>
+
+      {{-- EVENT CARDS --}}
+      <div class="events-grid">
+        @foreach($events as $event)
+        <div class="event-card reveal" data-type="{{ $event->location_type }}">
+          <div class="event-card-img">
+            <img class="event-card-flower"
+                 src="{{ asset('img/IMG_3864-removebg-preview.png') }}" alt="">
+            <span class="event-card-badge {{ $event->isSoldOut() ? 'sold-out' : '' }}">
+              {{ $event->isSoldOut() ? 'Sold Out' : ucfirst($event->location_type) }}
+            </span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-card-meta">
+              <span class="event-meta-item">📅 {{ $event->event_date->format('d M Y') }}</span>
+              <span class="event-meta-item">🕐 {{ $event->event_date->format('g:i A') }}</span>
+            </div>
+            <h3 class="event-card-name">{{ $event->title }}</h3>
+            <p class="event-card-desc">{{ $event->description }}</p>
+            <div class="event-card-footer">
+              <div>
+                <p class="event-price">${{ number_format($event->price, 2) }}</p>
+                <p class="event-spots">{{ $event->spots_remaining }} spots remaining</p>
+              </div>
+              @if($event->isSoldOut())
+                <button class="btn-book sold-out" disabled>Sold Out</button>
+              @else
+                <button class="btn-book" onclick="openModal(
+                  {{ $event->id }},
+                  '{{ addslashes($event->title) }}',
+                  '${{ number_format($event->price, 2) }}',
+                  '{{ $event->event_date->format('d M Y · g:i A') }}',
+                  '{{ addslashes($event->location) }}'
+                )">Book Now</button>
+              @endif
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+
+      {{-- SUBSCRIBE STRIP --}}
+      <div class="subscribe-strip">
+        <div class="strip-text">
+          <h3>Don't miss the next one.</h3>
+          <p>Get a quiet email when new events are announced.</p>
+        </div>
+        <form class="strip-form" id="stripForm">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+          <button type="submit">Notify Me</button>
+        </form>
+      </div>
+
+    @else
+
+      {{-- EMPTY STATE --}}
+      <div id="emptyState">
+        <div class="empty-visual reveal">
+          <img class="empty-flower-main"
+               src="{{ asset('img/IMG_3864-removebg-preview.png') }}" alt="">
+          <img class="empty-flower-sm"
+               src="{{ asset('img/IMG_3869-removebg-preview.png') }}" alt="">
+        </div>
+        <div>
+          <span class="empty-eyebrow reveal">Coming Soon</span>
+          <h2 class="empty-heading reveal reveal-delay-1">
+            Something <em>beautiful</em><br>is being planned.
+          </h2>
+          <div class="rule reveal reveal-delay-2"></div>
+          <p class="empty-body reveal reveal-delay-2">
+            Madison is currently designing experiences that will bring people
+            together in meaningful ways — journaling circles, immersion days,
+            and intimate group gatherings.
+          </p>
+          <p class="empty-body reveal reveal-delay-3">
+            No events are live just yet. Leave your details below and you'll
+            be the very first to know when something's announced.
+          </p>
+          <div class="subscribe-box reveal reveal-delay-3" id="subscribe">
+            <p class="subscribe-box-title">Be the first to know.</p>
+            <p class="subscribe-box-sub">A quiet note when something's ready — no spam, ever.</p>
+            <form class="subscribe-form" id="emptySubscribeForm">
+              @csrf
+              <input type="text" name="name" placeholder="Your first name" required>
+              <input type="email" name="email" placeholder="Your email address" required>
+              <button type="submit">Notify Me When Events Are Live</button>
+              <p class="subscribe-note">You can unsubscribe any time.</p>
+              <div class="subscribe-success" id="emptySuccess">
+                <span class="subscribe-success-text">You're on the list. ✦</span>
+                <span class="subscribe-success-sub">We'll reach out as soon as something's scheduled.</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    @endif
+
+  </div>
+</section>
+
+{{-- BOOKING MODAL --}}
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <div>
+        <h2 class="modal-title">Reserve Your Spot</h2>
+        <p class="modal-event-name" id="modalEventName"></p>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="bookingForm">
+        @csrf
+        <input type="hidden" name="event_id" id="bookingEventId">
+        <p class="modal-section-title">Your Details</p>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="first_name" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="last_name" required>
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:14px;">
+          <label>Email Address</label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="form-group" style="margin-top:14px;">
+          <label>Phone (optional)</label>
+          <input type="tel" name="phone">
+        </div>
+        <div class="order-summary">
+          <div class="order-row">
+            <span class="order-row-label" id="orderEventName"></span>
+            <span class="order-row-value" id="orderEventPrice"></span>
+          </div>
+          <div class="order-row">
+            <span class="order-row-label" id="orderDate"></span>
+            <span class="order-row-value" id="orderLocation"></span>
+          </div>
+          <hr class="order-divider">
+          <div class="order-row">
+            <span class="order-total-label">Total</span>
+            <span class="order-total-value" id="orderTotal"></span>
+          </div>
+        </div>
+        <p class="modal-section-title">Payment</p>
+        <div class="square-container" id="card-container">
+          {{-- Square Web Payments SDK mounts here --}}
+        </div>
+        <p id="payment-status-container"></p>
+        <button type="button" class="modal-submit" id="modalSubmit">
+          Complete Booking
+        </button>
+        <p class="modal-secure">🔒 Secured by Square. We never store card details.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+@endsection
+
+@section('scripts')
+<script src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+<script>
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Modal
+let payments, card;
+
+async function initSquare() {
+  if (typeof Square === 'undefined') return;
+  payments = Square.payments('{{ config("services.square.app_id") }}', '{{ config("services.square.location_id") }}');
+  card = await payments.card();
+  await card.attach('#card-container');
+}
+initSquare();
+
+function openModal(eventId, name, price, date, location) {
+  document.getElementById('bookingEventId').value  = eventId;
+  document.getElementById('modalEventName').textContent  = name;
+  document.getElementById('orderEventName').textContent  = name;
+  document.getElementById('orderEventPrice').textContent = price;
+  document.getElementById('orderDate').textContent       = date;
+  document.getElementById('orderLocation').textContent   = location;
+  document.getElementById('orderTotal').textContent      = price;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modalOverlay').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeModal();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+// Booking submit
+document.getElementById('modalSubmit').addEventListener('click', async () => {
+  const btn = document.getElementById('modalSubmit');
+  const status = document.getElementById('payment-status-container');
+  btn.disabled = true;
+  btn.textContent = 'Processing...';
+  status.textContent = '';
+
+  try {
+    // 1. Tokenize card via Square
+    const result = await card.tokenize();
+    if (result.status !== 'OK') {
+      status.textContent = 'Payment error: ' + result.errors[0].message;
+      btn.disabled = false;
+      btn.textContent = 'Complete Booking';
+      return;
+    }
+
+    // 2. Submit booking to Laravel
+    const form = document.getElementById('bookingForm');
+    const formData = new FormData(form);
+    formData.append('square_token', result.token);
+
+    const res = await fetch('{{ route("booking.store") }}', {
+      method: 'POST',
+      headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content },
+      body: formData,
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      // 3. Redirect to Square checkout to complete payment
+      window.location.href = data.checkout_url;
+    } else {
+      status.textContent = data.message ?? 'Something went wrong.';
+      btn.disabled = false;
+      btn.textContent = 'Complete Booking';
+    }
+  } catch (err) {
+    status.textContent = 'Unexpected error. Please try again.';
+    btn.disabled = false;
+    btn.textContent = 'Complete Booking';
+  }
+});
+
+// Subscribe forms
+async function submitSubscribe(formEl, onSuccess) {
+  const btn = formEl.querySelector('button[type="submit"]');
+  btn.textContent = 'Saving...';
+  btn.disabled = true;
+  const res = await fetch('{{ route("subscribe") }}', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+    },
+    body: JSON.stringify({
+      name:  formEl.querySelector('input[name="name"]').value,
+      email: formEl.querySelector('input[name="email"]').value,
+    }),
+  });
+  const data = await res.json();
+  if (data.success) { onSuccess(); }
+  else {
+    btn.textContent = 'Try Again';
+    btn.disabled = false;
+    alert(data.message ?? 'Something went wrong.');
+  }
+}
+
+const emptyForm = document.getElementById('emptySubscribeForm');
+if (emptyForm) {
+  emptyForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitSubscribe(emptyForm, () => {
+      emptyForm.querySelectorAll('input').forEach(i => i.style.display = 'none');
+      emptyForm.querySelector('button').style.display = 'none';
+      emptyForm.querySelector('.subscribe-note').style.display = 'none';
+      document.getElementById('emptySuccess').style.display = 'block';
+    });
+  });
+}
+
+const stripForm = document.getElementById('stripForm');
+if (stripForm) {
+  stripForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitSubscribe(stripForm, () => {
+      stripForm.innerHTML = '<p style="font-family:var(--serif);font-style:italic;font-size:18px;color:var(--taupe);">You\'re on the list. ✦</p>';
+    });
+  });
+}
+</script>
+@endsection
