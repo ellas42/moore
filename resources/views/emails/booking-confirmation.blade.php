@@ -1,3 +1,11 @@
+@component('styles')
+<style>
+
+    
+</style>
+
+@endcomponent
+
 @component('mail::message')
 # Your spot is reserved. ✦
 
