@@ -16,6 +16,7 @@ class SubscriberController extends Controller
             'email' => 'required|email|unique:subscribers,email',
         ]);
 
+
         $subscriber = Subscriber::create($validated);
 
         Mail::to($subscriber->email)

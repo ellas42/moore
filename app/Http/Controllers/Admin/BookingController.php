@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Event;
 use App\Mail\BookingConfirmation;
@@ -40,7 +41,8 @@ class BookingController extends Controller
             return $booking;
         });
 
-        // Redirect user to Square checkout
+        // Redirect user to Square checkout ???
+        //in-page payment supposedly
         return response()->json([
             'success'      => true,
             'checkout_url' => $event->square_checkout_url,
@@ -55,6 +57,6 @@ class BookingController extends Controller
         Mail::to($booking->email)
             ->send(new BookingConfirmation($booking));
 
-        return view('booking-confirmation', compact('booking'));
+        return view('admin.booking-confirmation', compact('booking'));
     }
 }

@@ -9,6 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+:root { --base: #FAF7F2; --blush: #F0E8DC; --taupe: #9C8874; --brown: #6B4F3A; --dark: #2C1A0E; --white: #FFFFFF; --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'DM Sans', sans-serif; }
+
 html {
   scrollbar-width: none; 
   -ms-overflow-style: none;
@@ -141,22 +143,46 @@ img {
     display: none;
   }
 
+  .events-empty-flower,
+  .events-empty-flower-sm {
+    display: none !important;
+  }
+
+  .events-empty {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .events-empty-heading, .events-empty-body, .subscribe-form, .subscribe-note, .subscribe-success {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .subscribe-form .form-row {
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .events-empty-visual {
+    display: none;
+  }
+
+  .subscribe-form {
+    max-width: 100%;
+  }
+
+  .why-flower-main, .why-flower-sm {
+    display: none;
+  }
+
+
 
   #emptyState {
     display: flex;
     flex-direction: column;
-  }
-  .events-empty-visual {
-    margin-bottom: -10px;
-  }
-  .events-empty-flower {
-    width: 50%;
-    max-width: 160px;
-    margin: 0 auto;
-    display: block;
-  }
-  .events-empty-flower-sm {
-    display: none;
   }
 }
 </style>

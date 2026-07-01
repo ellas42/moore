@@ -3,7 +3,8 @@ use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\BookingController;
+//idk if its supposed to be in admin but it works
+use App\Http\Controllers\Admin\BookingController; 
 
 Route::get('/',        fn() => view('layouts.home'))->name('home');
 Route::get('/events',  [EventController::class, 'index'])->name('events');
@@ -36,5 +37,11 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::post('/webhook/square', [WebhookController::class, 'handle']);
+
+//email test delete soon
+Route::get('/preview-email', function () {
+    $subscriber = new \App\Models\Subscriber(['name' => 'Madison', 'email' => 'theuphoriass@gmail.com']);
+    return new \App\Mail\SubscriberConfirmation($subscriber);
+});
 
 require __DIR__.'/auth.php';

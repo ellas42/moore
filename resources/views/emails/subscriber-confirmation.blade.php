@@ -1,13 +1,3 @@
-@component('styles')
-
-<style>
-    #message {
-
-    }
-</style>
-
-@endcomponent
-
 
 @component('mail::message')
 # You're on the list!

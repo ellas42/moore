@@ -139,7 +139,7 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
 .footer-links a:hover { color: var(--dark); }
 .footer-copy { font-size: 11px; color: var(--taupe); font-family: var(--sans); font-weight: 300; text-align: right; }
 
-@media (max-width: 960px) { .nav { padding: 18px 24px; } .nav-links { display: none; } .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; text-align: center; } .hero-left { padding-right: 0; align-items: center; } .hero-wordmark { max-width: 300px; } .hero-tagline { max-width: 100%; } .hero-actions { justify-content: center; flex-wrap: wrap; } .hero-right { min-height: 320px; } .hero-scroll { left: 24px; } .about-grid, .why-grid, .journal-inner { grid-template-columns: 1fr; gap: 40px; } .section-pad { padding: 72px 24px; } .section-pad-sm { padding: 56px 24px; } .offerings-header { flex-direction: column; align-items: flex-start; gap: 24px; } .offerings-grid { grid-template-columns: 1fr 1fr; gap: 16px; } .testi-grid { grid-template-columns: 1fr; } .quote-banner { padding: 80px 24px; } .footer-inner { grid-template-columns: 1fr; text-align: center; gap: 24px; } .footer-links { justify-content: center; } .footer-copy { text-align: center; } }
+@media (max-width: 960px) { .nav { padding: 18px 24px; } .nav-links { display: none; } .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; text-align: center; } .hero-left { padding-right: 0; align-items: center; } .hero-wordmark { max-width: 300px; } .hero-tagline { max-width: 100%; } .hero-actions { justify-content: center; flex-wrap: wrap; } .hero-right { min-height: 320px; } .hero-scroll { left: 24px; } .about-grid, .why-grid, .journal-inner { grid-template-columns: 1fr; gap: 40px; } .events-empty { grid-template-columns: 1fr; gap: 32px; } .events-empty-visual { display: none; } .section-pad { padding: 72px 24px; } .section-pad-sm { padding: 56px 24px; } .offerings-header { flex-direction: column; align-items: flex-start; gap: 24px; } .offerings-grid { grid-template-columns: 1fr 1fr; gap: 16px; } .testi-grid { grid-template-columns: 1fr; } .quote-banner { padding: 80px 24px; } .footer-inner { grid-template-columns: 1fr; text-align: center; gap: 24px; } .footer-links { justify-content: center; } .footer-copy { text-align: center; } }
 @media (prefers-reduced-motion: reduce) { .reveal, .hero-flower-main, .hero-flower-accent { transition: none; animation: none; opacity: 1; transform: none; } }
 </style>
 
@@ -239,7 +239,7 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
           Something beautiful<br>is being planned.
         </p>
         <p class="events-empty-body reveal reveal-delay-2">
-          No events are scheduled just yet — but they're coming.
+          No events are scheduled just yet, but they're coming.
           Leave your name and email below and you'll be the very first
           to know when Madison announces something new.
         </p>
@@ -253,7 +253,7 @@ footer { background: var(--white); border-top: 1px solid rgba(156,136,116,0.15);
           </div>
           <p class="subscribe-note">No spam, ever. Just a quiet note when something's ready.</p>
           <p class="subscribe-success" id="subscribeSuccess">
-            You're on the list — we'll be in touch. ✦
+            You're on the list! We'll be in touch.
           </p>
         </form>
       </div>
